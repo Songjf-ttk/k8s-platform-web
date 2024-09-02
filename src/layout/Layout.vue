@@ -39,7 +39,7 @@
             <!-- 处理有多个子路由的情况，如集群、工作负载、负载均衡等 -->
             <!-- 父菜单 -->
             <!-- 注意el-menu-item在折叠后，title的部分会自动消失，但el-sub-menu不会，需要自己控制 -->
-            <el-sub-menu class="aside-submenu" v-else-if="menu.children && menu.children.length > 1" :index="menu.path">
+            <el-sub-menu class="aside-submenu" v-else-if="menu.children && menu.children.length >= 1" :index="menu.path">
               <template #title>
                 <el-icon><component :is="menu.icon" /></el-icon>
                 <span :class="[isCollapse ? 'is-collapse' : '']">{{menu.name}}</span>

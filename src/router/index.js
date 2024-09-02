@@ -33,17 +33,16 @@ const routes = [
         ]
     },
     {
-        path: '/workflow',
+        path: '/volcano',
         component: Layout,
-        icon: "VideoPlay",
         children: [
             {
-                path: "/workflow",
-                name: "工作流",
-                icon: "VideoPlay",
-                meta: {title: "工作流", requireAuth: true},
-                component: () => import('@/views/workflow/Workflow.vue')
-            }
+                path: '/volcano',
+                name: '任务列表',
+                icon: "el-icons-s-data", //图标
+                meta: {title:"任务列表", requireAuth: true}, //定义meta元数据
+                component: () => import('@/views/volcano/Vcjob.vue')
+            },
         ]
     },
     {

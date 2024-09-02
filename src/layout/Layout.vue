@@ -10,7 +10,7 @@
             <el-image class="logo-image" :src="logo" />
             <!-- 平台名，折叠后不显示 -->
             <span :class="[isCollapse ? 'is-collapse' : '']">
-              <span class="logo-name">Kubernetes</span>
+              <span class="logo-name">Volcano</span>
             </span>
           </div>
         </el-affix>
@@ -23,9 +23,9 @@
                  router
                  :default-active="$route.path"
                  :collapse="isCollapse"
-                 background-color="#131b27"
-                 text-color="#bfcbd9"
-                 active-text-color="#20a0ff">
+                 background-color="#ffffff"
+                 text-color="#4e5969"
+                 active-text-color="#3874fe">
           <!-- for循环路由规则 -->
           <div v-for="menu in routers" :key="menu">
             <!-- 处理子路由只有1个的情况，如概要、工作流 -->
@@ -176,11 +176,11 @@ export default {
 /* 侧边栏折叠速度，背景色 */
 .aside{
   transition: all .5s;
-  background-color: #131b27;
+  background-color: #ffffff;
 }
 /* 固钉，以及logo图片和平台名的属性 */
 .aside-logo{
-  background-color: #131b27;
+  background-color: #ffffff;
   height: 60px;
   color: white;
 }
@@ -194,6 +194,7 @@ export default {
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
+  color: #101010;
 }
 /* 滚动条不展示 */
 .aside::-webkit-scrollbar {
@@ -208,22 +209,22 @@ export default {
 }
 /* 菜单栏的位置以及颜色 */
 .aside-menu-item.is-active {
-  background-color: #1f2a3a ;
+  background-color: #ffffff ;
 }
 .aside-menu-item {
   padding-left: 20px !important;
 }
 .aside-menu-item:hover {
-  background-color: #142c4e ;
+  background-color: #f2f3f5 ;
 }
 .aside-menu-childitem {
   padding-left: 40px !important;
 }
 .aside-menu-childitem.is-active {
-  background-color: #1f2a3a ;
+  background-color: #f2f3f5 ;
 }
 .aside-menu-childitem:hover {
-  background-color: #142c4e ;
+  background-color: #f2f3f5 ;
 }
 /* header的属性 */
 .header{

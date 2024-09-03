@@ -25,21 +25,22 @@ const routes = [
         children: [
             {
                 path: '/home', //视图
-                name: "集群状态",
+                name: "仪表盘",
                 component: () => import('@/views/home/Home.vue'),
                 icon: "odometer", //图标
-                meta: {title:"集群状态", requireAuth: false}, //定义meta元数据
+                meta: {title:"仪表盘", requireAuth: false}, //定义meta元数据
             },
         ]
     },
     {
         path: '/volcano',
         component: Layout,
+        icon: "VideoPlay",
         children: [
             {
                 path: '/volcano',
                 name: '任务列表',
-                icon: "el-icons-s-data", //图标
+                icon: "VideoPlay", //图标
                 meta: {title:"任务列表", requireAuth: true}, //定义meta元数据
                 component: () => import('@/views/volcano/Vcjob.vue')
             },

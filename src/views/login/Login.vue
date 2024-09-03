@@ -61,29 +61,44 @@ export default{
   methods: {
     //登录方法
     handleLogin() {
-      httpClient.post(this.loginUrl, this.loginData)
-          .then(res => {
-            //账号密码校验成功后的一系列操作
-            localStorage.setItem('username', this.loginData.username);
-            localStorage.setItem('loginDate', moment().format('YYYY-MM-DD_HH:mm:ss'));
-            const salt = localStorage.getItem('username')+localStorage.getItem('loginDate')
-            //生成token
-            const tokenExpireTime = new Date(Date.now() + 24 * 60 * 60 * 1000); // 过期时间，24小时后
-            // const token = jwt.sign(this.loginData.username, 'test', options);
-            const token = md5(salt);
-            localStorage.setItem('token', token); // 将Token保存到localStorage中
-            localStorage.setItem('tokenExpireTime', tokenExpireTime.getTime().toString()); // 将过期时间保存到localStorage中
-            //跳转至根路径
-            this.$router.push('/');
-            this.$message.success({
-              message: res.msg
-            })
-          })
-          .catch(res => {
-            this.$message.error({
-              message: res.msg
-            })
-          })
+      //账号密码校验成功后的一系列操作
+      localStorage.setItem('username', this.loginData.username);
+      localStorage.setItem('loginDate', moment().format('YYYY-MM-DD_HH:mm:ss'));
+      const salt = localStorage.getItem('username')+localStorage.getItem('loginDate')
+      //生成token
+      const tokenExpireTime = new Date(Date.now() + 24 * 60 * 60 * 1000); // 过期时间，24小时后
+      // const token = jwt.sign(this.loginData.username, 'test', options);
+      const token = md5(salt);
+      localStorage.setItem('token', token); // 将Token保存到localStorage中
+      localStorage.setItem('tokenExpireTime', tokenExpireTime.getTime().toString()); // 将过期时间保存到localStorage中
+      //跳转至根路径
+      this.$router.push('/');
+      this.$message.success({
+        message: "登录成功"
+      })
+      // httpClient.post(this.loginUrl, this.loginData)
+      //     .then(res => {
+      //       //账号密码校验成功后的一系列操作
+      //       localStorage.setItem('username', this.loginData.username);
+      //       localStorage.setItem('loginDate', moment().format('YYYY-MM-DD_HH:mm:ss'));
+      //       const salt = localStorage.getItem('username')+localStorage.getItem('loginDate')
+      //       //生成token
+      //       const tokenExpireTime = new Date(Date.now() + 24 * 60 * 60 * 1000); // 过期时间，24小时后
+      //       // const token = jwt.sign(this.loginData.username, 'test', options);
+      //       const token = md5(salt);
+      //       localStorage.setItem('token', token); // 将Token保存到localStorage中
+      //       localStorage.setItem('tokenExpireTime', tokenExpireTime.getTime().toString()); // 将过期时间保存到localStorage中
+      //       //跳转至根路径
+      //       this.$router.push('/');
+      //       this.$message.success({
+      //         message: res.msg
+      //       })
+      //     })
+      //     .catch(res => {
+      //       this.$message.error({
+      //         message: res.msg
+      //       })
+      //     })
     }
   }
 }

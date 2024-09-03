@@ -2,47 +2,9 @@
   <div class="home">
     <!-- 折叠面板 -->
     <el-collapse v-model="activeNames">
-      <!-- 面板1 集群资源卡片 -->
-      <el-collapse-item title="集群资源" name="1">
-        <el-row :gutter="10" style="margin-bottom: 10px;">
-          <!-- 命名空间数量 -->
-          <el-col :span="5">
-            <el-card class="home-node-card" :body-style="{padding:'10px'}">
-              <div style="float:left;padding-top:20%">
-                <!-- 进度条 -->
-                <!-- stroke-width 进度条的宽度 -->
-                <!-- show-text 是否显示文字描述 -->
-                <!-- percentage 进度百分比 -->
-                <el-progress  :stroke-width="20" :show-text="false" type="circle" :percentage="namespaceActive/namespaceTotal * 100"></el-progress>
-              </div>
-              <div>
-                <p class="home-node-card-title">命名空间: Active/总量</p>
-                <p class="home-node-card-num">{{ namespaceActive }}/{{ namespaceTotal }}</p>
-              </div>
-            </el-card>
-          </el-col>
-          <!-- 服务数量 单个namespace中deployment的数量 -->
-          <el-col :span="5">
-            <el-card class="home-node-card" :body-style="{padding:'10px'}">
-              <div>
-                <p class="home-node-card-title">服务数</p>
-                <p class="home-node-card-num">{{ deploymentTotal }}</p>
-              </div>
-            </el-card>
-          </el-col>
-          <!-- 实例数 单个namespace中pod的数量 -->
-          <el-col :span="5">
-            <el-card class="home-node-card" :body-style="{padding:'10px'}">
-              <div>
-                <p class="home-node-card-title">实例数</p>
-                <p class="home-node-card-num">{{ podTotal }}</p>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </el-collapse-item>
+      
       <!-- 面板2 节点资源卡片 -->
-      <el-collapse-item title="节点资源" name="2">
+      <el-collapse-item title="资源使用情况" name="2">
         <el-row :gutter="10" style="margin-bottom: 10px;">
           <!-- 节点数量 -->
           <el-col :span="5">
@@ -76,7 +38,7 @@
               </div>
               <div>
                 <p class="home-node-card-title">内存: 可分配/容量</p>
-                <p class="home-node-card-num">{{ specTrans(nodeMemAllocatable)*0.8 }}Gi/{{ specTrans(nodeMemCapacity) }}Gi</p>
+                <p class="home-node-card-num">{{ specTrans(nodeMemAllocatable)*0.8 }}G/{{ specTrans(nodeMemCapacity) }}G</p>
               </div>
             </el-card>
           </el-col>
@@ -94,8 +56,9 @@
           </el-col>
         </el-row>
       </el-collapse-item>
+
       <!-- 面板3 资源统计画图 -->
-      <el-collapse-item title="资源统计" name="3">
+      <el-collapse-item title="调度策略设置" name="3">
         <el-row :gutter="10">
           <!-- 每个namspace中pod数量的作图统计 -->
           <el-col :span="24" style="margin-bottom: 10px;">
@@ -127,7 +90,7 @@ export default {
   data() {
     return {
       //控制折叠面板的展开，表示打开所有的折叠面板
-      activeNames: ["1", "2", "3"],
+      activeNames: ["2", "3"],
       //获取namespace的属性
       namespaceActive: 0,
       namespaceValue: 'default',
